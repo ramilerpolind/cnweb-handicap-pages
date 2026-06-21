@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>足球盘口简明指南 · cnweb-handicap</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fae7d9 0%, #f5d6c6 50%, #efc9b6 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      line-height: 1.6;
+    }
+
+    .card {
+      max-width: 880px;
+      width: 100%;
+      background-color: #fffefc;
+      border-radius: 32px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 20px 40px rgba(180, 120, 80, 0.18), 0 6px 14px rgba(140, 90, 60, 0.10);
+      transition: box-shadow 0.25s ease, transform 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 28px 52px rgba(180, 120, 80, 0.22), 0 8px 18px rgba(140, 90, 60, 0.12);
+      transform: translateY(-3px);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #4d2e1b;
+      margin-bottom: 0.6rem;
+      border-left: 6px solid #c28562;
+      padding-left: 1.2rem;
+      line-height: 1.2;
+    }
+
+    .subhead {
+      font-size: 1.1rem;
+      color: #7d5c44;
+      margin-bottom: 2rem;
+      padding-left: 1.8rem;
+      border-left: 2px solid #dcb69b;
+      font-weight: 400;
+    }
+
+    p {
+      color: #3e2d21;
+      margin-bottom: 1.4rem;
+      font-size: 1.05rem;
+    }
+
+    .pull-quote {
+      background: #f7ede5;
+      border-radius: 20px;
+      padding: 1.4rem 1.8rem;
+      margin: 1.8rem 0 2rem 0;
+      font-style: italic;
+      font-size: 1.08rem;
+      color: #533e2d;
+      border-left: 8px solid #c28562;
+      box-shadow: inset 0 1px 4px rgba(180, 130, 90, 0.08);
+    }
+
+    .pull-quote strong {
+      font-style: normal;
+      font-weight: 600;
+      color: #3b281c;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem 2rem;
+      margin: 2rem 0 2.2rem 0;
+    }
+
+    .feature-item {
+      background: #faf5f0;
+      padding: 1rem 1.2rem;
+      border-radius: 18px;
+      border: 1px solid #efe3d9;
+      transition: background 0.2s;
+    }
+
+    .feature-item:hover {
+      background: #f3e9e0;
+    }
+
+    .feature-item span {
+      display: inline-block;
+      background: #c28562;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    .feature-item h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #3b281c;
+      margin-bottom: 0.2rem;
+    }
+
+    .feature-item p {
+      font-size: 0.95rem;
+      color: #5b4536;
+      margin-bottom: 0;
+    }
+
+    .cta-line {
+      background: #f6e8de;
+      padding: 1.2rem 1.8rem;
+      border-radius: 60px;
+      display: inline-block;
+      margin: 0.8rem 0 1.4rem 0;
+      font-size: 1.1rem;
+      border: 1px solid #dfcab9;
+    }
+
+    a {
+      color: #a86d47;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 2px solid #e1c2ad;
+      padding-bottom: 1px;
+      transition: border-color 0.2s, color 0.2s;
+      border-radius: 4px;
+    }
+
+    a:hover {
+      color: #7f4f30;
+      border-bottom-color: #b88461;
+    }
+
+    .faq-note {
+      background: #fcf7f2;
+      border-radius: 28px;
+      padding: 1.5rem 1.8rem;
+      margin: 2rem 0 1rem 0;
+      border: 1px solid #e7d5c6;
+    }
+
+    .faq-note h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #4d2e1b;
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-note p {
+      margin-bottom: 0.6rem;
+      font-size: 0.98rem;
+    }
+
+    .faq-note p:last-child {
+      margin-bottom: 0;
+    }
+
+    .footer-note {
+      margin-top: 2.2rem;
+      border-top: 1px solid #e9d9cc;
+      padding-top: 1.2rem;
+      font-size: 0.92rem;
+      color: #7b6251;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-note small {
+      opacity: 0.7;
+    }
+
+    @media (max-width: 640px) {
+      .card {
+        padding: 2rem 1.2rem;
+      }
+      h1 {
+        font-size: 1.6rem;
+        padding-left: 0.8rem;
+      }
+      .subhead {
+        font-size: 0.95rem;
+        padding-left: 1rem;
+      }
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .cta-line {
+        font-size: 1rem;
+        padding: 1rem 1.2rem;
+        border-radius: 40px;
+      }
+      .pull-quote {
+        padding: 1rem 1.2rem;
+        font-size: 1rem;
+      }
+      .faq-note {
+        padding: 1rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>盘口，不止是数字</h1>
+  <div class="subhead">从一场比赛开始，理解足球盘口的逻辑与分寸</div>
+
+  <p>足球盘口对于许多爱好者来说，既是熟悉的陪伴，也常常引起困惑。一个完整的盘面背后，集合了球队状态、历史交锋、市场情绪与机构视角。与其被符号牵动，不如先建立一套稳定的观察框架。</p>
+
+  <p>在 <strong>cnweb-handicap</strong> 上，我们更愿意把盘口当作一种语言——它讲述的是一种概率分布，而非预言。当你学会阅读这份语言，你便多了一重理解比赛的维度。</p>
+
+  <div class="pull-quote">
+    “盘口在变，但基本面与数据纪律才是锚点。<br>
+    看懂 <strong>足球盘口</strong> 的第一步，是分清哪些信息值得信任，哪些只是噪声。”
+  </div>
+
+  <p>也因此，我们整理了几个基础的认知节点，帮助你在接触盘口时少走弯路：</p>
+
+  <div class="feature-grid">
+    <div class="feature-item">
+      <span>01</span>
+      <h3>盘型与水位</h3>
+      <p>平半、半球、一球——不同盘型对应不同的实力差区间。水位波动常反映资金流向或信息更新，但不必过度解读每一次微小跳动。</p>
+    </div>
+    <div class="feature-item">
+      <span>02</span>
+      <h3>横向对比</h3>
+      <p>同一场比赛，对比多个平台的初始盘与即时盘，能帮你识别是否出现系统性偏离，而非孤立看某一条线。</p>
+    </div>
+    <div class="feature-item">
+      <span>03</span>
+      <h3>赛前动态</h3>
+      <p>首发名单、伤病、天气、战意，这些基本盘之外的因素，往往比细微的盘口变化更具决定意义。</p>
+    </div>
+    <div class="feature-item">
+      <span>04</span>
+      <p style="margin-top: 0.5rem;"><strong>保持节奏</strong><br>盘口研究不是每天盯住每场变化，而是建立自己的关注清单和复盘习惯。减少无效浏览，才能保留判断力。</p>
+    </div>
+  </div>
+
+  <div class="cta-line">
+    📘 想更系统地理解盘口框架？可以看看 <a href="https://cnweb-handicap.com">足球盘口</a> 上的专题梳理，从基础到进阶都有循序渐进的内容。
+  </div>
+
+  <p>除了上述四点，你还会发现：盘口的学习更像是一种素养积累。不必急于掌握所有变化，先从自己最熟悉的联赛开始，观察一周、两周，记录赛果与盘口的对应关系，再慢慢拓宽视野。</p>
+
+  <div class="faq-note">
+    <h4>❓ 常见疑问摘要</h4>
+    <p><strong>Q：</strong> 为什么同一场比赛不同平台盘口不一致？<br>
+    <strong>A：</strong> 各家风控模型、用户基数与调整时机不同，存在细微差异是正常的。关键是判断主流趋势，而非纠结绝对数字。</p>
+    <p><strong>Q：</strong> 盘口变化大就一定代表有内幕消息？<br>
+    <strong>A：</strong> 不必然。有时只是大额资金进入后的连锁反应，或是机构主动平衡风险。结合新闻与官方信息，比单纯看曲线更可靠。</p>
+    <p><strong>Q：</strong> 需要专门工具或付费数据吗？<br>
+    <strong>A：</strong> 初期完全不需要。公开的赛程、积分榜、赛后统计已经足够。真正重要的是你如何整理和思考这些信息。</p>
+  </div>
+
+  <p>最后想分享一个温和的建议：盘口可以是我们欣赏比赛时的一个参考坐标，但不必成为每场比赛的全部。好的盘口认知，会让你在看球时多一分从容，少一分焦虑。希望你在 <strong>cnweb-handicap</strong> 能找到适合自己的学习节奏。</p>
+
+  <div class="footer-note">
+    <span>cnweb-handicap · 以知识型视角理解足球盘口</span>
+    <small>内容仅供参考，不构成任何决策建议</small>
+  </div>
+</div>
+
+</body>
+</html>
